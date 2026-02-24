@@ -472,7 +472,6 @@ rds_ingress_groups = {
     "sgr-chips-oltp-db*"
   ],
   cics = [
-    "sgr-cics-asg*",
     "sgr-windows-workloads-bus-obj-1-server*"
   ]
 }
