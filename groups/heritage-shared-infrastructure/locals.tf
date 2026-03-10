@@ -12,7 +12,7 @@ locals {
 
   internal_fqdn = format("%s.%s.aws.internal", split("-", var.aws_account)[1], split("-", var.aws_account)[0])
 
-rds_ingress_from_services = {
+  rds_ingress_from_services = {
     "bcd" = length(var.rds_ingress_groups["bcd"]) > 0 ? flatten([
       for sg_data in data.aws_security_group.rds_ingress_bcd : {
         from_port                = 1521

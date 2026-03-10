@@ -110,7 +110,7 @@ resource "aws_security_group_rule" "chs_application_db" {
 
 resource "aws_security_group_rule" "chs_application_em" {
   for_each = toset(local.chs_application_cidrs)
-  
+
   description       = "Oracle Enterprise Manager from onpremise"
   type              = "ingress"
   from_port         = 5500
@@ -144,18 +144,18 @@ module "sessions_rds" {
   storage_encrypted          = true
   kms_key_id                 = data.aws_kms_key.rds.arn
 
-  db_name  = upper(var.name)
-  username = local.sess_rds_data["admin-username"]
-  password = local.sess_rds_data["admin-password"]
-  port     = "1521"
+  db_name                     = upper(var.name)
+  username                    = local.sess_rds_data["admin-username"]
+  password                    = local.sess_rds_data["admin-password"]
+  port                        = "1521"
   manage_master_user_password = false
 
-  deletion_protection              = true
-  maintenance_window               = var.rds_maintenance_window
-  backup_window                    = var.rds_backup_window
-  backup_retention_period          = var.backup_retention_period
-  skip_final_snapshot              = false
-  option_group_description = "Option group for ${join("-", ["rds", var.identifier, var.environment, "001"])}"
+  deletion_protection         = true
+  maintenance_window          = var.rds_maintenance_window
+  backup_window               = var.rds_backup_window
+  backup_retention_period     = var.backup_retention_period
+  skip_final_snapshot         = false
+  option_group_description    = "Option group for ${join("-", ["rds", var.identifier, var.environment, "001"])}"
   parameter_group_description = "Database parameter group for ${join("-", ["rds", var.identifier, var.environment, "001"])}"
   db_subnet_group_description = "Database subnet group for ${join("-", ["rds", var.identifier, var.environment, "001"])}"
 
