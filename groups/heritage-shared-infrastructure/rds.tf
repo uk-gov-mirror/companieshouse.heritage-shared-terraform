@@ -5,7 +5,7 @@ module "rds_security_group" {
   for_each = var.rds_databases
 
   source  = "terraform-aws-modules/security-group/aws"
-  version = ">= 5.0.0"
+  version = "5.3.1"
 
   name        = "sgr-${each.key}-rds-001"
   description = format("Security group for the %s RDS database", upper(each.key))
@@ -63,7 +63,7 @@ module "rds_app_security_group" {
   for_each = local.rds_databases_requiring_app_access
 
   source  = "terraform-aws-modules/security-group/aws"
-  version = ">= 5.0.0"
+  version = "5.3.1"
 
   name        = "sgr-${each.key}-rds-002"
   description = format("Security group for the %s RDS database", upper(each.key))
