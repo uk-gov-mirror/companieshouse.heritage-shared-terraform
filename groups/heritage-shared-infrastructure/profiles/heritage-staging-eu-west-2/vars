@@ -474,7 +474,8 @@ rds_ingress_groups = {
     "sgr-chd-bep-asg*",
     "sgr-chd-fe-asg*",
     "sgr-chips-oltp-db*",
-    "sgr-chips-rep-db*"
+    "sgr-chips-rep-db*",
+    "sgr-admin-sites-asg*"
   ],
   cics = []
 }
